@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+
+# PROVIDE: vault
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name=vault
+user={{ lookup.user }}
+rcvar=vault_enable
+
+start_cmd="${name}_start"
+
+command="/usr/local/bin/${name}"
+command_args="server -config=/usr/local/etc/vault.json"
+
+pidfile="/var/run/vault/${name}.pid"
+
+required_files="/usr/local/etc/vault.json"
+
+load_rc_config $name
+
+vault_start()
+{
+	su - $user -c "$command $command_args" 1>/dev/null 2>&1 &
+}
+
+run_rc_command "$1"
+

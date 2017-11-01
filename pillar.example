@@ -1,0 +1,11 @@
+vault:
+    lookup:
+        package: https://releases.hashicorp.com/vault/0.8.3/vault_0.8.3_freebsd_amd64.zip
+        package_arm: https://releases.hashicorp.com/vault/0.8.3/vault_0.8.3_freebsd_arm.zip
+        package_hash: https://releases.hashicorp.com/vault/0.8.3/vault_0.8.3_SHA256SUMS
+        config_file: /usr/local/etc/vault.json
+        service: vault
+        service_file: /usr/local/etc/rc.d/vault
+        user: vault
+        group: vault
+        datadir: /var/lib/vault
